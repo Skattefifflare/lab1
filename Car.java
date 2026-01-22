@@ -41,14 +41,19 @@ public abstract class Car implements Movable {
     }
 
 
-    // TODO fix this method according to lab pm
     public void gas(double amount){
-        incrementSpeed(amount);
-    }
+        if (amount < 0 || amount > 1 ) throw new Error("invalid gas parameter");
 
-    // TODO fix this method according to lab pm
+        var old_speed = getCurrentSpeed();
+        incrementSpeed(amount);
+        if (old_speed > getCurrentSpeed()) throw new Error("incrementSpeed decreased the speed");
+    }
     public void brake(double amount){
+        if (amount < 0 || amount > 1 ) throw new Error("invalid brake parameter");
+
+        var old_speed = getCurrentSpeed();
         decrementSpeed(amount);
+        if (old_speed > getCurrentSpeed()) throw new Error("decrementSpeed increased the speed");
     }
 
     protected abstract double speedFactor();
