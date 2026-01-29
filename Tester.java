@@ -11,6 +11,16 @@ public class Tester {
         car.move();
         assertEquals(0.1, car.x_pos);
     }
+
+    @Test
+    public void testGas(){
+        var car2 = new Volvo240();
+        car2.startEngine();
+        assertTrue(car2.getCurrentSpeed() < car2.incrementSpeed());
+
+
+    }
+
     public static void main (String[] args){
 
         Tester t = new Tester();
