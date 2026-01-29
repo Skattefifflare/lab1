@@ -7,60 +7,65 @@ import org.junit.jupiter.api.Test;
 public class Tester {
 
     @Test
-    public void testMove(){
+    public void testMove() {
         var car = new Saab95();
         car.startEngine();
         car.move();
-        assertEquals(0.1, car.GetXPos());
+        assertEquals(0.1, car.getX());
 
     }
-    public static void main (String[] args){
+
+    public static void main(String[] args) {
 
         Tester t = new Tester();
         t.testMove();
     }
+
     @Test
     public void testTurnLeft() {
         var car = new Saab95();
         car.startEngine();
         car.move();
         car.turnLeft();
-        assertTrue(getRight()==1 && getDown() == -1);
+        assertTrue(car.getRight() == 1 && car.getDown() == -1);
         car.turnLeft();
-        assertTrue(getRight()==0 && getDown() == -1);
+        assertTrue(car.getRight() == 0 && car.getDown() == -1);
         car.turnLeft();
-        assertTrue(getRight()==-1 && getDown() == -1);
+        assertTrue(car.getRight() == -1 && car.getDown() == -1);
         car.turnLeft();
-        assertTrue(getRight()==-1 && getDown() == 0);
+        assertTrue(car.getRight() == -1 && car.getDown() == 0);
         car.turnLeft();
-        assertTrue(getRight()==-1 && getDown() == 1);
+        assertTrue(car.getRight() == -1 && car.getDown() == 1);
         car.turnLeft();
-        assertTrue(getRight()==0 && getDown() == 1);
+        assertTrue(car.getRight() == 0 && car.getDown() == 1);
         car.turnLeft();
-        assertTrue(getRight()==1 && getDown() == 1);
+        assertTrue(car.getRight() == 1 && car.getDown() == 1);
         car.turnLeft();
-        assertTrue(getRight()==1 && getDown() == 0);
-    }@Test
+        assertTrue(car.getRight() == 1 && car.getDown() == 0);
+    }
+
+    @Test
     public void testTurnRight() {
         var car = new Saab95();
         car.startEngine();
         car.move();
         car.turnRight();
-        assertTrue(getRight()==1 && getDown() == 0);
+        assertTrue(car.getRight() == 1 && car.getDown() == 0);
         car.turnRight();
-        assertTrue(getRight()==1 && getDown() == 1);
+        assertTrue(car.getRight() == 1 && car.getDown() == 1);
         car.turnRight();
-        assertTrue(getRight()==0 && getDown() == 1);
+        assertTrue(car.getRight() == 0 && car.getDown() == 1);
         car.turnRight();
-        assertTrue(getRight()==-1 && getDown() == 1);
+        assertTrue(car.getRight() == -1 && car.getDown() == 1);
         car.turnRight();
-        assertTrue(getRight()==-1 && getDown() == 0);
+        assertTrue(car.getRight() == -1 && car.getDown() == 0);
         car.turnRight();
-        assertTrue(getRight()==-1 && getDown() == -1);
+        assertTrue(car.getRight() == -1 && car.getDown() == -1);
         car.turnRight();
-        assertTrue(getRight()==0 && getDown() == -1);
+        assertTrue(car.getRight() == 0 && car.getDown() == -1);
         car.turnRight();
-        assertTrue(getRight()==1 && getDown() == -1);
+        assertTrue(car.getRight() == 1 && car.getDown() == -1);
 
     }
+}
 
