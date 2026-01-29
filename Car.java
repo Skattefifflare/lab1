@@ -50,38 +50,27 @@ public abstract class Car implements Movable {
 	    currentSpeed = 0;
     }
 
-
     public void gas(double amount){
         if (amount <= 0 || amount >= 1 ) throw new Error("invalid gas parameter");
-
-        var old_speed = getCurrentSpeed();
         incrementSpeed(amount);
-        if (old_speed > getCurrentSpeed()) throw new Error("incrementSpeed decreased the speed");
-        LimitSpeed();
     }
     public void brake(double amount){
         if (amount <= 0 || amount >= 1 ) throw new Error("invalid brake parameter");
-
-        var old_speed = getCurrentSpeed();
         decrementSpeed(amount);
-        if (old_speed > getCurrentSpeed()) throw new Error("decrementSpeed increased the speed");
-        LimitSpeed();
     }
-    void LimitSpeed(){
-        currentSpeed = Math.min(Math.max(0, currentSpeed), enginePower);
-    }
+
 
     protected abstract double speedFactor();
 
     private void incrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+        currentSpeed = Math.min( getCurrentSpeed() + speedFactor() * amount, enginePower);
     }
 
     private void decrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+        currentSpeed = getCurrentSpeed() - speedFactor() * amount;//max
     }
 
-
+    @Override
     public void move(){
         switch (direction){
             case 0:
@@ -98,9 +87,11 @@ public abstract class Car implements Movable {
                 break;
         }
     }
+    @Override
     public void turnLeft(){
        direction = (direction + 3) % 4;
     }
+    @Override
     public void turnRight(){
         direction = (direction +1) % 4;
     }
