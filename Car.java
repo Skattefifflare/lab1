@@ -2,31 +2,35 @@ import java.awt.*;
 
 
 public abstract class Car implements Movable {
-	protected int nrDoors;          // Number of doors on the car
-    protected double enginePower;   // Engine power of the car
-    protected double currentSpeed;  // The current speed of the car
-    protected Color color;          // Color of the car
-    protected String modelName;     // The car model name
+	private int nrDoors;          // Number of doors on the car
+    private double enginePower;   // Engine power of the car
+    private double currentSpeed;  // The current speed of the car
+    private Color color;          // Color of the car
+    private String modelName;     // The car model name
 
+    public Car(int nrDoors, double enginePower, Color color, String modelName){
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
+        this.color = color;
+        this.modelName = modelName;
+    }
     private double x_pos = 0;
     private double y_pos = 0;
     private int going_right = 1;
     private int going_down = 0;
-
-    public double GetXPos(){
-        return x_pos;
-    }
-    //add get methods
-
-    public Car(int nrDoors){
-        this.nrDoors = nrDoors;
-    }
+    public double getX(){return x_pos;}
+    public double getY(){return y_pos;}
+    public int getRight(){return going_right;}
+    public int getDown(){return going_down;}
 
     public int getNrDoors(){
         return nrDoors;
     }
     public double getEnginePower(){
         return enginePower;
+    }
+    public String getModelName(){
+        return modelName;
     }
 
     public double getCurrentSpeed(){
@@ -36,7 +40,6 @@ public abstract class Car implements Movable {
     public Color getColor(){
         return color;
     }
-
     public void setColor(Color clr){
 	    color = clr;
     }
@@ -44,7 +47,6 @@ public abstract class Car implements Movable {
     public void startEngine(){
 	    currentSpeed = 0.1;
     }
-
     public void stopEngine(){
 	    currentSpeed = 0;
     }
@@ -63,7 +65,6 @@ public abstract class Car implements Movable {
 
         var old_speed = getCurrentSpeed();
         decrementSpeed(amount);
-        //move to jUnit
         if (old_speed > getCurrentSpeed()) throw new Error("decrementSpeed increased the speed");
         LimitSpeed();
     }
@@ -74,22 +75,18 @@ public abstract class Car implements Movable {
     protected abstract double speedFactor();
 
     private void incrementSpeed(double amount){
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,  enginePower);
+        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
     }
 
     private void decrementSpeed(double amount){
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
 
 
-
-    // implementar Movable här:
-    @Override
     public void move(){
-        x_pos += going_right * getCurrentSpeed();
-        y_pos += going_down * getCurrentSpeed();
+        x_pos = going_right * getCurrentSpeed();
+        y_pos = going_down * getCurrentSpeed();
     }
-    @Override
     public void turnLeft(){ //45 degree turns
         switch(going_right){
             case 0:
