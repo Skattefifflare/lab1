@@ -21,7 +21,7 @@ public abstract class Car implements Movable {
     }
 
     public double getCurrentSpeed(){
-        return currentSpeed;
+        return Math.min(Math.max(0, currentSpeed), enginePower);
     }
 
     public Color getColor(){
@@ -42,18 +42,23 @@ public abstract class Car implements Movable {
 
 
     public void gas(double amount){
-        if (amount < 0 || amount > 1 ) throw new Error("invalid gas parameter");
+        if (amount <= 0 || amount >= 1 ) throw new Error("invalid gas parameter");
 
         var old_speed = getCurrentSpeed();
         incrementSpeed(amount);
         if (old_speed > getCurrentSpeed()) throw new Error("incrementSpeed decreased the speed");
+        LimitSpeed();
     }
     public void brake(double amount){
-        if (amount < 0 || amount > 1 ) throw new Error("invalid brake parameter");
+        if (amount <= 0 || amount >= 1 ) throw new Error("invalid brake parameter");
 
         var old_speed = getCurrentSpeed();
         decrementSpeed(amount);
         if (old_speed > getCurrentSpeed()) throw new Error("decrementSpeed increased the speed");
+        LimitSpeed();
+    }
+    void LimitSpeed(){
+        currentSpeed = Math.min(Math.max(0, currentSpeed), enginePower);
     }
 
     protected abstract double speedFactor();
@@ -67,7 +72,7 @@ public abstract class Car implements Movable {
         x_pos = going_right * getCurrentSpeed();
         y_pos = going_down * getCurrentSpeed();
     }
-    public void turnLeft(){
+    public void turnLeft(){ //45 degree turns
         switch(going_right){
             case 0:
                 going_right = (going_down == 1 ? 1 : -1);
@@ -89,7 +94,7 @@ public abstract class Car implements Movable {
                 going_down = (going_right == -1 ? 0 : going_down);
         }
     }
-    public void turnRight(){
+    public void turnRight(){ //45 degree turns
         switch(going_right){
             case 0:
                 going_right = (going_down == 1 ? -1 : 1);
