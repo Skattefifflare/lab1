@@ -8,10 +8,19 @@ public abstract class Car implements Movable {
     protected Color color;          // Color of the car
     protected String modelName;     // The car model name
 
-    public double x_pos = 0;
-    public double y_pos = 0;
-    protected int going_right = 1;
-    protected int going_down = 0;
+    private double x_pos = 0;
+    private double y_pos = 0;
+    private int going_right = 1;
+    private int going_down = 0;
+
+    public double GetXPos(){
+        return x_pos;
+    }
+    //add get methods
+
+    public Car(int nrDoors){
+        this.nrDoors = nrDoors;
+    }
 
     public int getNrDoors(){
         return nrDoors;
@@ -54,6 +63,7 @@ public abstract class Car implements Movable {
 
         var old_speed = getCurrentSpeed();
         decrementSpeed(amount);
+        //move to jUnit
         if (old_speed > getCurrentSpeed()) throw new Error("decrementSpeed increased the speed");
         LimitSpeed();
     }
@@ -62,16 +72,24 @@ public abstract class Car implements Movable {
     }
 
     protected abstract double speedFactor();
-    protected abstract void incrementSpeed(double amount);
-    protected abstract void decrementSpeed(double amount);
+
+    private void incrementSpeed(double amount){
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,  enginePower);
+    }
+
+    private void decrementSpeed(double amount){
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+    }
 
 
 
     // implementar Movable här:
+    @Override
     public void move(){
-        x_pos = going_right * getCurrentSpeed();
-        y_pos = going_down * getCurrentSpeed();
+        x_pos += going_right * getCurrentSpeed();
+        y_pos += going_down * getCurrentSpeed();
     }
+    @Override
     public void turnLeft(){ //45 degree turns
         switch(going_right){
             case 0:
