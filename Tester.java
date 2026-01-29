@@ -18,6 +18,20 @@ public class Tester {
     public static void main(String[] args) {
 
     }
+    @Test
+    public void testGasAndBrake(){
+        var car2 = new Volvo240();
+        var car3 = new Volvo240();
+        car2.startEngine();
+        car2.move();
+        var old_speed = car2.getCurrentSpeed();
+        car2.gas(0.9);
+        assertTrue(old_speed < car2.getCurrentSpeed());//Gas
+        var incSpeed = car2.getCurrentSpeed();
+        car2.brake(0.4);
+        assertTrue(incSpeed > car2.getCurrentSpeed());//Brake
+    }
+
 
     @Test
     public void testTurnLeft() {
