@@ -16,12 +16,11 @@ public abstract class Car implements Movable {
     }
     private double x_pos = 0;
     private double y_pos = 0;
-    private int going_right = 1;
-    private int going_down = 0;
+    private int direction = 0;
+
     public double getX(){return x_pos;}
     public double getY(){return y_pos;}
-    public int getRight(){return going_right;}
-    public int getDown(){return going_down;}
+    public int getDirection(){return direction;}
 
     public int getNrDoors(){
         return nrDoors;
@@ -84,52 +83,26 @@ public abstract class Car implements Movable {
 
 
     public void move(){
-        x_pos = going_right * getCurrentSpeed();
-        y_pos = going_down * getCurrentSpeed();
-    }
-    public void turnLeft(){ //45 degree turns
-        switch(going_right){
+        switch (direction){
             case 0:
-                going_right = (going_down == 1 ? 1 : -1);
+                y_pos += getCurrentSpeed();
                 break;
             case 1:
-                going_right = (going_down == -1 ? 0 : going_right);
+                x_pos += getCurrentSpeed();
                 break;
-            case -1:
-                going_right = (going_down == 1 ? 0 : going_right);
-        }
-        switch(going_down){
-            case 0:
-                going_down = (going_right == -1 ? 1 : -1);
+            case 2:
+                y_pos -= getCurrentSpeed();
                 break;
-            case 1:
-                going_down = (going_right == 1 ? 0 : going_down);
+            case 3:
+                x_pos -= getCurrentSpeed();
                 break;
-            case -1:
-                going_down = (going_right == -1 ? 0 : going_down);
         }
     }
-    public void turnRight(){ //45 degree turns
-        switch(going_right){
-            case 0:
-                going_right = (going_down == 1 ? -1 : 1);
-                break;
-            case -1:
-                going_right = (going_down == -1 ? 0 : going_right);
-                break;
-            case 1:
-                going_right = (going_down == 1 ? 0 : going_right);
-        }
-        switch(going_down){
-            case 0:
-                going_down = (going_right == -1 ? -1 : 1);
-                break;
-            case -1:
-                going_down = (going_right == 1 ? 0 : going_down);
-                break;
-            case 1:
-                going_down = (going_right == -1 ? 0 : going_down);
-        }
+    public void turnLeft(){
+       direction = (direction + 3) % 4;
+    }
+    public void turnRight(){
+        direction = (direction +1) % 4;
     }
 
 }
