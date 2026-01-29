@@ -51,11 +51,11 @@ public abstract class Car implements Movable {
     }
 
     public void gas(double amount){
-        if (amount <= 0 || amount >= 1 ) throw new Error("invalid gas parameter");
+        if (amount < 0 || amount > 1 ) throw new Error("invalid gas parameter");
         incrementSpeed(amount);
     }
     public void brake(double amount){
-        if (amount <= 0 || amount >= 1 ) throw new Error("invalid brake parameter");
+        if (amount < 0 || amount > 1 ) throw new Error("invalid brake parameter");
         decrementSpeed(amount);
     }
 

@@ -37,40 +37,72 @@ public class Tester {
     public void testTurnLeft() {
         var car = new Saab95();
         car.startEngine();
-        car.move();
+
+
         car.turnLeft();
         assertEquals(3, car.getDirection());
+        car.move();
+        assertEquals(-0.1, car.getX());
+        assertEquals(0.0, car.getY());
+
         car.turnLeft();
         assertEquals(2, car.getDirection());
+        car.move();
+        assertEquals(-0.1, car.getX());
+        assertEquals(-0.1, car.getY());
+
         car.turnLeft();
         assertEquals(1, car.getDirection());
+        car.move();
+        assertEquals(0.0, car.getX());
+        assertEquals(-0.1, car.getY());
+
         car.turnLeft();
         assertEquals(0, car.getDirection());
-
+        car.move();
+        car.move();
+        assertEquals(0.0, car.getX());
+        assertEquals(0.1, car.getY());
     }
 
     @Test
     public void testTurnRight() {
         var car = new Saab95();
         car.startEngine();
-        car.move();
+
         car.turnRight();
         assertEquals(1, car.getDirection());
+        car.move();
+        assertEquals(0.1, car.getX());
+        assertEquals(0.0, car.getY());
+
         car.turnRight();
         assertEquals(2, car.getDirection());
+        car.move();
+        assertEquals(0.1, car.getX());
+        assertEquals(-0.1, car.getY());
+
         car.turnRight();
         assertEquals(3, car.getDirection());
+        car.move();
+        assertEquals(0.0, car.getX());
+        assertEquals(-0.1, car.getY());
+
         car.turnRight();
         assertEquals(0, car.getDirection());
+        car.move();
+        car.move();
+        assertEquals(0.0, car.getX());
+        assertEquals(0.1, car.getY());
     }
     @Test
     public void testTurbo(){
         var saab = new Saab95();
         saab.setTurboOn();
         saab.gas(1);
-        assertEquals(saab.getCurrentSpeed() == );
+        assertEquals(1.625, saab.getCurrentSpeed());
     }
-//test med saab, tubo on sedan gas och kolla speed
+
     //test move efter turn
 }
 
