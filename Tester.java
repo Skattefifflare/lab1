@@ -1,5 +1,5 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 import org.junit.jupiter.api.Test;
 
@@ -27,21 +27,14 @@ public class Tester {
         car.startEngine();
         car.move();
         car.turnLeft();
-        assertTrue(car.getRight() == 1 && car.getDown() == -1);
+        assertEquals(3, car.getDirection());
         car.turnLeft();
-        assertTrue(car.getRight() == 0 && car.getDown() == -1);
+        assertEquals(2, car.getDirection());
         car.turnLeft();
-        assertTrue(car.getRight() == -1 && car.getDown() == -1);
+        assertEquals(1, car.getDirection());
         car.turnLeft();
-        assertTrue(car.getRight() == -1 && car.getDown() == 0);
-        car.turnLeft();
-        assertTrue(car.getRight() == -1 && car.getDown() == 1);
-        car.turnLeft();
-        assertTrue(car.getRight() == 0 && car.getDown() == 1);
-        car.turnLeft();
-        assertTrue(car.getRight() == 1 && car.getDown() == 1);
-        car.turnLeft();
-        assertTrue(car.getRight() == 1 && car.getDown() == 0);
+        assertEquals(0, car.getDirection());
+
     }
 
     @Test
@@ -50,22 +43,18 @@ public class Tester {
         car.startEngine();
         car.move();
         car.turnRight();
-        assertTrue(car.getRight() == 1 && car.getDown() == 0);
+        assertEquals(1, car.getDirection());
         car.turnRight();
-        assertTrue(car.getRight() == 1 && car.getDown() == 1);
+        assertEquals(2, car.getDirection());
         car.turnRight();
-        assertTrue(car.getRight() == 0 && car.getDown() == 1);
+        assertEquals(3, car.getDirection());
         car.turnRight();
-        assertTrue(car.getRight() == -1 && car.getDown() == 1);
-        car.turnRight();
-        assertTrue(car.getRight() == -1 && car.getDown() == 0);
-        car.turnRight();
-        assertTrue(car.getRight() == -1 && car.getDown() == -1);
-        car.turnRight();
-        assertTrue(car.getRight() == 0 && car.getDown() == -1);
-        car.turnRight();
-        assertTrue(car.getRight() == 1 && car.getDown() == -1);
+        assertEquals(0, car.getDirection());
+
+
 
     }
+
+
 }
 
