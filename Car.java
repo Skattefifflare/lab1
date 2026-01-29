@@ -2,22 +2,35 @@ import java.awt.*;
 
 
 public abstract class Car implements Movable {
-	protected int nrDoors;          // Number of doors on the car
-    protected double enginePower;   // Engine power of the car
-    protected double currentSpeed;  // The current speed of the car
-    protected Color color;          // Color of the car
-    protected String modelName;     // The car model name
+	private int nrDoors;          // Number of doors on the car
+    private double enginePower;   // Engine power of the car
+    private double currentSpeed;  // The current speed of the car
+    private Color color;          // Color of the car
+    private String modelName;     // The car model name
 
-    public double x_pos = 0;
-    public double y_pos = 0;
-    protected int going_right = 1;
-    protected int going_down = 0;
+    public Car(int nrDoors, double enginePower, Color color, String modelName){
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
+        this.color = color;
+        this.modelName = modelName;
+    }
+    private double x_pos = 0;
+    private double y_pos = 0;
+    private int going_right = 1;
+    private int going_down = 0;
+    public double getX(){return x_pos;}
+    public double getY(){return y_pos;}
+    public int getRight(){return going_right;}
+    public int getDown(){return going_down;}
 
     public int getNrDoors(){
         return nrDoors;
     }
     public double getEnginePower(){
         return enginePower;
+    }
+    public String getModelName(){
+        return modelName;
     }
 
     public double getCurrentSpeed(){
@@ -27,7 +40,6 @@ public abstract class Car implements Movable {
     public Color getColor(){
         return color;
     }
-
     public void setColor(Color clr){
 	    color = clr;
     }
@@ -35,7 +47,6 @@ public abstract class Car implements Movable {
     public void startEngine(){
 	    currentSpeed = 0.1;
     }
-
     public void stopEngine(){
 	    currentSpeed = 0;
     }
@@ -62,12 +73,16 @@ public abstract class Car implements Movable {
     }
 
     protected abstract double speedFactor();
-    protected abstract void incrementSpeed(double amount);
-    protected abstract void decrementSpeed(double amount);
+
+    public void incrementSpeed(double amount){
+        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+    }
+
+    public void decrementSpeed(double amount){
+        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+    }
 
 
-
-    // implementar Movable här:
     public void move(){
         x_pos = going_right * getCurrentSpeed();
         y_pos = going_down * getCurrentSpeed();
