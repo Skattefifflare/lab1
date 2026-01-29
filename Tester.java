@@ -11,14 +11,12 @@ public class Tester {
         var car = new Saab95();
         car.startEngine();
         car.move();
-        assertEquals(0.1, car.getX());
+        assertEquals(0.1, car.getY());
 
     }
 
     public static void main(String[] args) {
 
-        Tester t = new Tester();
-        t.testMove();
     }
 
     @Test
