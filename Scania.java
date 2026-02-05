@@ -1,10 +1,12 @@
 import java.awt.*;
 
+import static java.awt.Color.pink;
+
 public class Scania extends Car implements Truck  {
 
 
     public Scania(int nrDoors, double enginePower, Color color, String modelName){
-        super(nrDoors, enginePower, color, modelName);
+        super(2, 1100, Color.pink, "Scania");
     }
 
     private int flakAngle;
