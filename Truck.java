@@ -2,6 +2,6 @@
 
 public interface Truck {
 
-    void IncrementFlak(int amount);
-    void DecrementFlak(int amount);
+    void IncrementFlak();
+    void DecrementFlak();
 }

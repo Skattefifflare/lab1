@@ -8,38 +8,28 @@ public class Scania extends Car implements Truck  {
     }
 
     private int flakAngle;
-
     public int getFlakAngle() {
         return flakAngle;
     }
 
     @Override
     public double speedFactor(){
-
+        return 1;
     }
 
-    @Override
-    public double getCurrentSpeed(){
-        if(getFlakAngle() == 0){
-            return Math.min(Math.max(0, getCurrentSpeed()), getEnginePower());
-        } else {return 0;}
-    }
 
-    @Override
-    public void DecrementFlak(int amount) {
+    public void DecrementFlak() {
         if(getCurrentSpeed() == 0){
-            if(getFlakAngle() - amount >= 0 || getFlakAngle() - amount <= 70){
-                flakAngle = getFlakAngle() -  amount;
+            if (flakAngle > 0){
+                flakAngle -= 1;
             }
-
         }
     }
 
-    @Override
-    public void IncrementFlak(int amount) {
+    public void IncrementFlak() {
         if(getCurrentSpeed() == 0){
-            if(getFlakAngle() + amount >= 0 || getFlakAngle() + amount <= 70){
-                flakAngle = getFlakAngle() + amount;
+            if(flakAngle < 70) {
+                flakAngle += 1;
             }
         }
     }
