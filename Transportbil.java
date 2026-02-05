@@ -2,41 +2,43 @@ import java.awt.*;
 
 public class Transportbil extends Car implements Truck  {
 
-    CarCargo<Car> car;
+    CarCargo cargo;
 
     public Transportbil(int nrDoors, double enginePower, Color color, String modelName){
         super(nrDoors, enginePower, color, modelName);
+        cargo = new CarCargo<Car>(); // antal i flaket ska vara en constructor parameter?
+
     }
 
-    private boolean flakAngle;
+    private boolean flakUp;
     public boolean getFlakAngle() {
-        return flakAngle;
+        return flakUp;
     }
 
     @Override
     public double speedFactor(){
-        if (flakAngle) return 0;
+        if (flakUp) return 0;
         else return 1;
     }
 
 
     public void DecrementFlak() {
         if(getCurrentSpeed() == 0){
-            if (flakAngle){
-                flakAngle = false;
+            if (flakUp){
+                flakUp = false;
             }
         }
     }
 
     public void IncrementFlak() {
         if(getCurrentSpeed() == 0){
-            if(!flakAngle) {
-                flakAngle = true;
+            if(!flakUp) {
+                flakUp = true;
             }
         }
     }
-    public void loadCars(){
-
+    public void loadCar(){
+        if (!flakUp) cargo.Add
     }
     public void deloadCars(){
 
