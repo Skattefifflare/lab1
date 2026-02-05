@@ -35,4 +35,10 @@ public class Transportbil extends Car implements Truck  {
             }
         }
     }
+    public void loadCars(){
+
+    }
+    public void deloadCars(){
+
+    }
 }
