@@ -2,6 +2,7 @@ import java.awt.*;
 
 public class Transportbil extends Car implements Truck  {
 
+    CarCargo<Car> car;
 
     public Transportbil(int nrDoors, double enginePower, Color color, String modelName){
         super(nrDoors, enginePower, color, modelName);
