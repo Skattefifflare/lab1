@@ -5,7 +5,7 @@ import static java.awt.Color.pink;
 public class Scania extends Car implements Truck  {
 
 
-    public Scania(int nrDoors, double enginePower, Color color, String modelName){
+    public Scania(){
         super(2, 1100, Color.pink, "Scania");
     }
 
