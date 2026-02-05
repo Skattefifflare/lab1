@@ -7,7 +7,7 @@ public class Transportbil extends Car implements Truck  {
 
     public Transportbil(){
         super(2, 1500, Color.green, "Transportbil");
-        cargo = new CarCargo<Car>(); // antal i flaket ska vara en constructor parameter?
+        cargo = new CarCargo<Car>(7); // antal i flaket ska vara en constructor parameter?
     }
 
     private boolean flakUp;
@@ -34,13 +34,20 @@ public class Transportbil extends Car implements Truck  {
         if(getCurrentSpeed() == 0){
             if(!flakUp) {
                 flakUp = true;
+
             }
         }
     }
-    public void loadCar(){
-        if (!flakUp) cargo.Add
+    public void loadCar(Car car){
+        double lenght = Math.sqrt((Math.pow(this.getX()-car.getX(),2)+Math.pow(this.getY()-car.getY(),2)));
+        if (!flakUp && lenght<10){
+            cargo.Add(car);}
     }
     public void deloadCars(){
+        if (flakUp){
+            var car = cargo.Remove();
+            car.sync();
 
+        }
     }
 }
