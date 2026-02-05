@@ -4,10 +4,10 @@ public class Transportbil extends Car implements Truck  {
 
     CarCargo cargo;
 
-    public Transportbil(int nrDoors, double enginePower, Color color, String modelName){
-        super(nrDoors, enginePower, color, modelName);
-        cargo = new CarCargo<Car>(); // antal i flaket ska vara en constructor parameter?
 
+    public Transportbil(){
+        super(2, 1500, Color.green, "Transportbil");
+        cargo = new CarCargo<Car>(); // antal i flaket ska vara en constructor parameter?
     }
 
     private boolean flakUp;
