@@ -8,6 +8,8 @@ public abstract class Car implements Movable {
     private Color color;          // Color of the car
     private String modelName;     // The car model name
 
+
+
     public Car(int nrDoors, double enginePower, Color color, String modelName){
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
@@ -16,10 +18,17 @@ public abstract class Car implements Movable {
     }
     private double x_pos = 0;
     private double y_pos = 0;
+
     private int direction = 0;
 
     public double getX(){return x_pos;}
     public double getY(){return y_pos;}
+    public void SetX(CarCargo<Car> cargo, double x){
+        if (cargo.cargo.contains(this)) x_pos = x;
+    }
+    public void SetY(CarCargo<Car> cargo, double y){
+        if (cargo.cargo.contains(this)) y_pos = y;
+    }
     public int getDirection(){return direction;}
 
     public int getNrDoors(){

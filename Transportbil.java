@@ -37,8 +37,9 @@ public class Transportbil extends Car implements Truck  {
             }
         }
     }
-    public void loadCar(){
-        if (!flakUp) cargo.Add
+
+    public void loadCar(Car car){
+        if (!flakUp) cargo.Add();
     }
     public void deloadCars(){
 
