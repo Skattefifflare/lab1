@@ -14,7 +14,8 @@ public class Scania extends Car implements Truck  {
 
     @Override
     public double speedFactor(){
-        return 1;
+        if (flakAngle != 0) return 0;
+        else return 1;
     }
 
 
