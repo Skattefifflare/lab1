@@ -1,4 +1,7 @@
+package cars;
+import towing.Car;
 import java.awt.*;
+
 
 public class Saab95 extends Car {
 
@@ -6,7 +9,7 @@ public class Saab95 extends Car {
 
     
     public Saab95(){
-        super(2, 125, Color.red, "Saab95");
+        super(2, 125, Color.red, "cars.Saab95");
     }
     
     @Override
@@ -14,6 +17,7 @@ public class Saab95 extends Car {
         double turbo = 1;
         if(turboOn) turbo = 1.3;
         return getEnginePower() * 0.01 * turbo;
+
     }
 
     public void setTurboOn(){

@@ -1,3 +1,5 @@
+package towing;
+import cars.Movable;
 import java.awt.*;
 
 
@@ -8,6 +10,7 @@ public abstract class Car implements Movable {
     private Color color;          // Color of the car
     private String modelName;     // The car model name
 
+    private boolean towed; // onödig??
 
 
     public Car(int nrDoors, double enginePower, Color color, String modelName){
@@ -23,13 +26,8 @@ public abstract class Car implements Movable {
 
     public double getX(){return x_pos;}
     public double getY(){return y_pos;}
-    public void SetX(CarCargo<Car> cargo, double x){
-        if (cargo.cargo.contains(this)) x_pos = x;
-    }
-    public void SetY(CarCargo<Car> cargo, double y){
-        if (cargo.cargo.contains(this)) y_pos = y;
-    }
     public int getDirection(){return direction;}
+
 
     public int getNrDoors(){
         return nrDoors;
@@ -105,4 +103,10 @@ public abstract class Car implements Movable {
         direction = (direction +1) % 4;
     }
 
+    protected void StartTowing(){towed = true;}
+    protected void StopTowing(){towed = false;}
+    protected void SetPos(double x, double y){
+        if (!towed) return;
+        x_pos = x; y_pos = y;
+    }
 }

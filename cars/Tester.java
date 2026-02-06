@@ -1,6 +1,5 @@
+package cars;
 import static org.junit.jupiter.api.Assertions.*;
-
-
 import org.junit.jupiter.api.Test;
 
 
@@ -12,7 +11,6 @@ public class Tester {
         car.startEngine();
         car.move();
         assertEquals(0.1, car.getY());
-
     }
 
     public static void main(String[] args) {
@@ -103,6 +101,11 @@ public class Tester {
         assertEquals(1.625, saab.getCurrentSpeed());
     }
 
-    //test move efter turn
+    @Test
+    public void testFlak(){
+        var scania = new Scania();
+        scania.IncrementFlak();
+        assertEquals(1, scania.getFlakAngle());
+    }
 }
 

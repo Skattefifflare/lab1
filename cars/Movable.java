@@ -1,4 +1,4 @@
-import java.awt.*;
+package cars;
 
 public interface Movable {
 
