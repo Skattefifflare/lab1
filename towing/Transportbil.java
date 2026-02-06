@@ -15,8 +15,8 @@ public class Transportbil extends Car implements Truck {
         cargo = new Cargo<Car>(7); // antal i flaket ska vara en constructor parameter?
     }
 
-    private boolean flakUp;
-    public boolean getFlakAngle() {
+    private boolean flakUp = true;
+    public boolean getFlakState() {
         return flakUp;
     }
 
