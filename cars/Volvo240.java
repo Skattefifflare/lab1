@@ -1,7 +1,6 @@
 package cars;
 
 import towing.Car;
-
 import java.awt.*;
 
 public class Volvo240 extends Car {
