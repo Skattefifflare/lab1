@@ -26,6 +26,12 @@ public class Transportbil extends Car implements Truck {
         else return 1;
     }
 
+    @Override
+    public void startEngine(){
+        if (!flakUp) return;
+        super.startEngine();
+    }
+
 
     public void DecrementFlak() {
         if(getCurrentSpeed() == 0){
