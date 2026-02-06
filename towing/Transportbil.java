@@ -1,11 +1,14 @@
 package towing;
 import cars.Truck;
 import java.awt.*;
+import java.util.List;
 
 public class Transportbil extends Car implements Truck {
 
     Cargo<Car> cargo;
-
+    public List<Car> getCargo(){
+        return cargo.car_list;
+    }
 
     public Transportbil(){
         super(2, 25, Color.green, "towing.Transportbil");
