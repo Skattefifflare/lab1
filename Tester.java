@@ -19,8 +19,9 @@ public class Tester {
     public static void main(String[] args) {
 
     }
+
     @Test
-    public void testGasAndBrake(){
+    public void testGasAndBrake() {
         var car2 = new Volvo240();
         var car3 = new Volvo240();
         car2.startEngine();
@@ -96,8 +97,9 @@ public class Tester {
         assertEquals(0.0, car.getX());
         assertEquals(0.1, car.getY());
     }
+
     @Test
-    public void testTurbo(){
+    public void testTurbo() {
         var saab = new Saab95();
         saab.setTurboOn();
         saab.gas(1);
@@ -105,10 +107,35 @@ public class Tester {
     }
 
     @Test
-    public void testFlak(){
+    public void testFlak() {
         var scania = new Scania();
         scania.IncrementFlak();
         assertEquals(1, scania.getFlakAngle());
     }
-}
+    @Test
+    public void testLoad() {
+        var tb = new Transportbil();
+        var car1 = new Saab95();
+        var car2 = new Volvo240();
+        car1.startEngine();
+        car1.gas(1);
+        car1.turnLeft();
+        car1.move();
+        tb.loadCar(car1);
+        assertEquals(0, tb.getCargo().size());
+        tb.loadCar(car2);
 
+        assertEquals(1, tb.getCargo().size());
+        tb.deloadCar();
+
+    }
+    @Test
+    public void testDeload(){
+        var tb = new Transportbil();
+        var car1 = new Saab95();
+        tb.loadCar(car1);
+        tb.deloadCar();
+        assertEquals(-10, car1.getX());
+    }
+
+}
