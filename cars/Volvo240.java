@@ -1,3 +1,6 @@
+package cars;
+
+import towing.Car;
 import java.awt.*;
 
 public class Volvo240 extends Car {
@@ -6,7 +9,7 @@ public class Volvo240 extends Car {
     
     
     public Volvo240(){
-        super(4, 100, Color.black, "Volvo240");
+        super(4, 30, Color.black, "cars.Volvo240");
     }
     
     @Override
