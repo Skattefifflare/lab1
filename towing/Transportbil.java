@@ -31,7 +31,6 @@ public class Transportbil extends Car implements Truck {
             }
         }
     }
-
     public void IncrementFlak() {
         if(getCurrentSpeed() == 0){
             if(!flakUp) {
@@ -41,8 +40,10 @@ public class Transportbil extends Car implements Truck {
         }
     }
     public void loadCar(Car car){
+        if (car.getTowed()) return;
         double length = Math.sqrt((Math.pow(this.getX()-car.getX(),2)+Math.pow(this.getY()-car.getY(),2)));
         if (!flakUp && length<10) {
+
             cargo.Add(car);
             car.StartTowing();
         }
@@ -54,7 +55,6 @@ public class Transportbil extends Car implements Truck {
             car.StopTowing();
         }
     }
-
     public void Tow(){
         for (Car car : cargo.car_list){
             car.SetPos(this.getX(), this.getY());

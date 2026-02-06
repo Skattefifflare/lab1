@@ -10,8 +10,8 @@ public abstract class Car implements Movable {
     private Color color;          // Color of the car
     private String modelName;     // The car model name
 
-    private boolean towed; // onödig??
-
+    private boolean towed;
+    public boolean getTowed(){return towed;}
 
     public Car(int nrDoors, double enginePower, Color color, String modelName){
         this.nrDoors = nrDoors;
