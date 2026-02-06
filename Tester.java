@@ -110,5 +110,18 @@ public class Tester {
         scania.IncrementFlak();
         assertEquals(1, scania.getFlakAngle());
     }
+
+    @Test
+    public void testTow(){
+        var transport = new Transportbil();
+        transport.move();
+        var volvo1 = new Volvo240();
+        transport.loadCar(volvo1);
+        transport.move();
+        transport.Tow();
+        assertEquals(volvo1.getX(), transport.getX());
+        assertEquals(volvo1.getY(), transport.getY());
+
+    }
 }
 

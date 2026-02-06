@@ -9,7 +9,7 @@ public class Saab95 extends Car {
 
     
     public Saab95(){
-        super(2, 33, Color.red, "cars.Saab95");
+        super(2, 125, Color.red, "cars.Saab95");
     }
     
     @Override
