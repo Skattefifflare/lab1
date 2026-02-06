@@ -8,7 +8,7 @@ public class Scania extends Car implements Truck  {
 
 
     public Scania(){
-        super(2, 1100, Color.pink, "cars.Scania");
+        super(2, 25, Color.pink, "cars.Scania");
     }
 
     private int flakAngle;
