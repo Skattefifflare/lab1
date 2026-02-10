@@ -56,9 +56,9 @@ public class Transportbil extends Car implements Truck {
         }
     }
     public void deloadCar(){
-        if (flakUp){
+        if (!flakUp){
             var car = flak.Remove();
-            car.SetPos(10, this.getY());
+            car.SetPos(this.getX()-10, this.getY());
             car.StopTowing();
         }
     }

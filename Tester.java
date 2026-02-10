@@ -129,7 +129,6 @@ public class Tester {
         Saab95 car1 = new Saab95();
         tb.LowerFlak();
         tb.loadCar(car1);
-        //assertEquals(1, tb.getCargo().size());
         tb.deloadCar();
         assertEquals(-10, car1.getX());
     }
