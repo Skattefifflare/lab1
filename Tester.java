@@ -139,7 +139,7 @@ public class Tester {
         var volvo1 = new Volvo240();
         transport.loadCar(volvo1);
         transport.move();
-        transport.Tow();
+
         assertEquals(volvo1.getX(), transport.getX());
         assertEquals(volvo1.getY(), transport.getY());
 
@@ -153,6 +153,18 @@ public class Tester {
         transport.startEngine();
         transport.move();
         transport.LowerFlak();
+        assertEquals(0.1, transport.getY());
         assertEquals(true, transport.getFlakState());
+    }
+
+    @Test
+    public void testWorkshop(){
+        Workshop<Volvo240> workshop = new Workshop<Volvo240>(10);
+
+        Volvo240 car = new Volvo240();
+        
+        workshop.LeaveCar(car);
+
+        var car2 = workshop.GetCar();
     }
 }

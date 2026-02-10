@@ -55,17 +55,24 @@ public class Transportbil extends Car implements Truck {
             car.StartTowing();
         }
     }
-    public void deloadCar(){
+    public Car deloadCar(){
         if (!flakUp){
             var car = flak.Remove();
             car.SetPos(this.getX()-10, this.getY());
             car.StopTowing();
+            return car;
         }
+        throw new IllegalStateException("flak uppe");
     }
 
-    public void Tow(){
+    private void Tow(){
         for (Car car : flak.car_list){
             car.SetPos(this.getX(), this.getY());
         }
+    }
+    @Override
+    public void move(){
+        super.move();
+        Tow();
     }
 }

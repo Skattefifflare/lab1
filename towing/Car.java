@@ -99,8 +99,8 @@ public abstract class Car implements Movable {
         direction = (direction +1) % 4;
     }
 
-    protected void StartTowing(){towed = true;}
-    protected void StopTowing(){towed = false;}
+    void StartTowing(){towed = true;}
+    void StopTowing(){towed = false;}
     protected void SetPos(double x, double y){
         if (!towed) return;
         x_pos = x; y_pos = y;
