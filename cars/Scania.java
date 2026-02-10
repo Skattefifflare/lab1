@@ -23,7 +23,7 @@ public class Scania extends Car implements Truck  {
     }
 
 
-    public void DecrementFlak() {
+    public void LowerFlak() {
         if(getCurrentSpeed() == 0){
             if (flakAngle > 0){
                 flakAngle -= 1;
@@ -31,7 +31,7 @@ public class Scania extends Car implements Truck  {
         }
     }
 
-    public void IncrementFlak() {
+    public void RaiseFlak() {
         if(getCurrentSpeed() == 0){
             if(flakAngle < 70) {
                 flakAngle += 1;

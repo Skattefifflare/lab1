@@ -5,27 +5,28 @@ import java.util.List;
 
 public class Transportbil extends Car implements Truck {
 
-    Cargo<Car> cargo;
+    Flak<Car> flak;
     public List<Car> getCargo(){
-        return cargo.car_list;
+        return flak.car_list;
     }
 
     public Transportbil(){
-        super(2, 25, Color.green, "towing.Transportbil");
-        cargo = new Cargo<Car>(7); // antal i flaket ska vara en constructor parameter?
+        super(2, 200, Color.green, "towing.Transportbil");
+        flak = new Flak<Car>(7);
     }
 
     private boolean flakUp;
-    public boolean getFlakAngle() {
+    public boolean getFlakState() {
         return flakUp;
     }
 
+
+    // ser till att bilen inte kan köra med flaket nere
     @Override
     public double speedFactor(){
         if (flakUp) return 0;
         else return 1;
     }
-
     @Override
     public void startEngine(){
         if (!flakUp) return;
@@ -33,39 +34,37 @@ public class Transportbil extends Car implements Truck {
     }
 
 
-    public void DecrementFlak() {
+    public void LowerFlak(){
         if(getCurrentSpeed() == 0){
-            if (flakUp){
+            if (flakUp) {
                 flakUp = false;
             }
         }
     }
-
-    public void IncrementFlak() {
+    public void RaiseFlak(){
         if(getCurrentSpeed() == 0){
             if(!flakUp) {
                 flakUp = true;
-
             }
         }
     }
     public void loadCar(Car car){
         double length = Math.sqrt((Math.pow(this.getX()-car.getX(),2)+Math.pow(this.getY()-car.getY(),2)));
         if (!flakUp && length<1) {
-            cargo.Add(car);
+            flak.Add(car);
             car.StartTowing();
         }
     }
     public void deloadCar(){
         if (flakUp){
-            var car = cargo.Remove();
+            var car = flak.Remove();
             car.SetPos(this.getX()-10, this.getY());
             car.StopTowing();
         }
     }
 
     public void Tow(){
-        for (Car car : cargo.car_list){
+        for (Car car : flak.car_list){
             car.SetPos(this.getX(), this.getY());
         }
     }

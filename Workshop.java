@@ -1,11 +1,11 @@
 import towing.Car;
-import towing.Cargo;
+import towing.Flak;
 
 public class Workshop<E extends Car> {
-    private Cargo<E> cars;
+    private Flak<E> cars;
 
     public Workshop(int max_cars){
-        cars = new Cargo<E>(max_cars);
+        cars = new Flak<E>(max_cars);
     }
     public void LeaveCar(E car){
         cars.Add(car);

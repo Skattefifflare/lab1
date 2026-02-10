@@ -4,11 +4,11 @@ import java.util.Stack;
 import cars.Truck;
 
 
-public class Cargo<E extends Car> {
+public class Flak<E extends Car> {
     int max_cars;
     List<E> car_list;
 
-    public Cargo(int max_cars){
+    public Flak(int max_cars){
         this.max_cars = max_cars;
 
         car_list = new Stack<>();

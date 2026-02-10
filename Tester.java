@@ -145,11 +145,11 @@ public class Tester {
     @Test
     public void testFlak(){
         var scania = new Scania();
-        scania.IncrementFlak();
+        scania.RaiseFlak();
         assertEquals(1, scania.getFlakAngle());
         var transport = new Transportbil();
         transport.move();
-        transport.IncrementFlak();
-        assertEquals(false, transport.getFlakAngle());
+        transport.RaiseFlak();
+        assertEquals(false, transport.getFlakState());
     }
 }
