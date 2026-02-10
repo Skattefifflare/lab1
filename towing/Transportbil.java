@@ -15,7 +15,7 @@ public class Transportbil extends Car implements Truck {
         flak = new Flak<Car>(7);
     }
 
-    private boolean flakUp;
+    private boolean flakUp = true;
     public boolean getFlakState() {
         return flakUp;
     }
@@ -58,7 +58,7 @@ public class Transportbil extends Car implements Truck {
     public void deloadCar(){
         if (flakUp){
             var car = flak.Remove();
-            car.SetPos(this.getX()-10, this.getY());
+            car.SetPos(10, this.getY());
             car.StopTowing();
         }
     }

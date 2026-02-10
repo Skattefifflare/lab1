@@ -1,17 +1,18 @@
 package towing;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 import cars.Truck;
 
 
 public class Flak<E extends Car> {
     int max_cars;
-    List<E> car_list;
+    ArrayList<E> car_list;
 
     public Flak(int max_cars){
         this.max_cars = max_cars;
 
-        car_list = new Stack<>();
+        car_list = new ArrayList<>();
+
     }
 
     public void Add(E car){
@@ -19,6 +20,9 @@ public class Flak<E extends Car> {
         car_list.add(car);
     }
     public E Remove(){
-        return car_list.removeLast();
+        int index = car_list.size()-1;
+        E car = car_list.get(index);
+        car_list.remove(car);
+        return car;
     }
 }

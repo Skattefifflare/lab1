@@ -114,6 +114,7 @@ public class Tester {
         car1.gas(1);
         car1.turnLeft();
         car1.move();
+        tb.LowerFlak();
         tb.loadCar(car1);
         assertEquals(0, tb.getCargo().size());
         tb.loadCar(car2);
@@ -125,8 +126,10 @@ public class Tester {
     @Test
     public void testDeload(){
         var tb = new Transportbil();
-        var car1 = new Saab95();
+        Saab95 car1 = new Saab95();
+        tb.LowerFlak();
         tb.loadCar(car1);
+        //assertEquals(1, tb.getCargo().size());
         tb.deloadCar();
         assertEquals(-10, car1.getX());
     }
@@ -148,8 +151,9 @@ public class Tester {
         scania.RaiseFlak();
         assertEquals(1, scania.getFlakAngle());
         var transport = new Transportbil();
+        transport.startEngine();
         transport.move();
-        transport.RaiseFlak();
-        assertEquals(false, transport.getFlakState());
+        transport.LowerFlak();
+        assertEquals(true, transport.getFlakState());
     }
 }
